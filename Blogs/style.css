@@ -1,0 +1,40 @@
+#heading{
+    background-color: chartreuse;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin:-0.5%;
+    padding:4%;
+    color:white;
+    font-weight: 800;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+}
+#mainContent{
+    margin-top:5%;
+    margin-left:15%;
+    margin-right:15%;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+    padding:3%;
+}
+body{
+    background-color: #eeeeee;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#title{
+    font-size: 30px;
+    padding:1%;
+    border-bottom:2px solid black;
+    width:100%;
+    color:chartreuse;
+    font-weight:800;
+}
+#date{
+    font-size: 20px;
+    margin:1%;
+    font-weight:600;
+}
+#content{
+    font-size: 18px;
+}
