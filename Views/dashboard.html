@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body{
+            background-color: #eeeeee;
+            text-align: center;
+        }
+        #header{
+            position:relative;
+            font-size: 30px;
+            font-family:fantasy;
+            padding:2%;
+            margin:-0.5%;
+            background-color: chartreuse;
+            color:white;
+            text-align: center;
+            box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+        }
+        #header button{
+            color:white;
+            background-color: chartreuse;
+            padding:1%;
+            margin:1%;
+            border:1px solid chartreuse;
+        }
+        #header button:hover{
+            background-color: white;
+            color:chartreuse;
+        }
+        #content{
+            background-color: white;
+            text-align: center;
+            padding: 2%;
+            margin-top:2%;
+            margin-left:5%;
+            margin-right:5%;
+            box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+        }
+        #bloglisttable{
+            margin-right:auto;
+            margin-left: auto;
+        }
+        #new_blog_table{
+            margin: auto;
+        }
+    </style>
+    <script src="dashboardscript.js" async defer></script>
+</head>
+<body>
+    <div id="header"><br/>
+        Shambhavi Writes | Admin<br/>
+        <button type="button" onclick="new_blogs()">NEW</button>
+        <button type="button" onclick="delete_blogs()">DELETE</button>
+        <button type="button" onclick="update_blogs()">UPDATE</button>
+    </div>
+    <div id="content">
+        <div id="content1">
+            <h1>Analytics</h1>
+            <button type="button" onclick="show_blog_list()">Blog List</button><br><br>
+            <div id="blog_list">
+            </div><br><br>
+        </div>
+        <div id="content2" style="display:none;">
+            <h1>New Blog</h1>
+            <form method="POST">
+                <table id="new_blog_table">
+                    <tr><td>Blog Title : </td><td><input type="text" name="new_blog_title" id="new_blog_title"></td></tr>
+                    <tr><td>Blog Date : </td><td><input type="date" name="new_blog_date" id="new_blog_date"></td></tr>
+                    <tr><td>Blog Content : </td><td><textarea name="new_blog_content" id="new_blog_content" cols="30" rows="10"></textarea></td></tr>
+                    <tr><td></td><td><input type="submit" value="Add Blog" name="new_blog_submit" formaction="/add_new_blog"></td></tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

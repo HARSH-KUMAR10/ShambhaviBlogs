@@ -3,7 +3,7 @@ function getBlogs(){
         var str ='<h1>My Blogs</h1><div id="blogs_all">';
         for(i=0;i<data.length;i++){
             str+="<div class='blogs_spacing'>";
-            str+='<div id="blog_header"><a href="'+data[i].blog_file+'">'+data[i].blog_title.toUpperCase()+'</a></div><hr size="3" color="gold" width="75%" align="left">';
+            str+='<div id="blog_header"><a class="blog_links" href="'+data[i].blog_file+'">'+data[i].blog_title.toUpperCase()+' - ('+data[i].blog_date.split('T')[0]+')</a></div><hr size="3" color="gold" width="75%" align="left">';
             str+='<div id="blog_content">'+data[i].blog_desc+'</div>';
             str+='</div>';
         }

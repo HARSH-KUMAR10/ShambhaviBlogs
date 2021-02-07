@@ -1,33 +1,38 @@
-const e = require("express");
 const express = require("express");
 const app = express();
-const pool = require('./Models/showBlogs');
+const select = require('./Models/selectfrom');
+var bodyParser = require('body-parser');  
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/Views/home.html');
 });
 
 app.get('/ShowAllBlogs',(req,res)=>{
-    pool.query("Select * from blogs",(err,result)=>{
-        if(err){
-            console.log(err);
-        }else{
-            console.log(result[0]);
-        }
-        res.json(result);
-    });
+    res.json(select.getBlogsList());
 });
 app.get('/ShowAboutMe',(req,res)=>{
-    pool.query('select * from aboutme',(err,result)=>{
-        if(err){
-            console.log(err);
-        }else{
-            console.log(result);
-            res.json(result);
-        }
-    })
+    res.json(select.getAboutMe());
 });
 
+app.get('/login',(req,res)=>{
+    console.log('login request');
+    res.sendFile(__dirname+'/Views/login.html');
+});
+
+app.post('/dashboard',urlencodedParser,(req,res)=>{
+    const login_id = req.body.user_id;
+    const pass = req.body.user_pass;
+    if(login_id=="ShambhaviHere" & pass=="mollymygirl"){
+        res.sendFile(__dirname+'/Views/dashboard.html');
+    }else{
+        res.send('Login credentials wrong contact your adminstrator');
+    }
+})
+
+app.get('/dashboard_blog_list',(req,res)=>{
+    res.json(select.getBlogsList())
+});
 //Adding directories used
 app.use(express.static('./Views'));
 
