@@ -109,6 +109,22 @@ const filename = req.query.filename;
 res.sendFile(__dirname+'/Blogs/'+filename);
 })
 
+
+app.get('/checkBlog',(req,res)=>{
+    var sql = "select * from blogs where blog_title='"+req.query.blog_title+"'";
+pool.query(sql,(err,result)=>{
+    console.log(result[0],result.length);
+    if(result.length==0){
+        var data = {
+            found:false
+        };
+        res.json(data);
+    }else{
+        res.json(result);
+
+    }
+})
+});
 /*
 Adding directories used
 */
