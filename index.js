@@ -125,6 +125,49 @@ pool.query(sql,(err,result)=>{
     }
 })
 });
+
+app.get('/updateBlog',(req,res)=>{
+    var blog_title = req.query.blog_title;
+    var blog_date = req.query.blog_date;
+    var blog_content = req.query.blog_content;
+    console.log(blog_date,blog_title,blog_content);
+    var titlename = blog_title.split(' ');
+    var blog_content_array = blog_content.split('\r\n');
+    var sql = "update blogs set blog_date='"+blog_date+"',blog_content='"+blog_content+" where blog_title='"+blog_title+"';"
+    pool.query(sql,(err,result)=>{
+        if(err){
+            console.log(err);
+            res.sendFile(__dirname+"/error");
+        }else{
+            var filename='';
+            for(i=0;i<titlename.length;i++){
+            filename+=titlename[i];
+            }
+            filename+='.html';
+            blog_content_temp='';
+            for(i=0;i<blog_content_array.length;i++){
+            blog_content_temp+=blog_content_array[i]+'<br/>';
+            }
+            const data = {
+            title : blog_title,
+            date : blog_date,
+            content : blog_content
+            }
+            var fileContent = '<html><head><title>'+data.title+'| Shambhavi'+'</title><link rel="stylesheet" href="style.css"/></head>';
+            fileContent+='<body><div id="heading">Shambhavi Writes</div><div id="mainContent"><div id="title">'+data.title+'</div><div id="date">'+data.date+'</div><div id="content">'+data.content;
+            fileContent+='</div></div></body></html>';
+            fs.writeFile(__dirname+'/Blogs/'+filename,fileContent,(err)=>{
+        if(err){
+            console.log('file not written');
+        }else{
+            console.log('file written');
+        }
+    });
+
+
+        }
+    })
+})
 /*
 Adding directories used
 */

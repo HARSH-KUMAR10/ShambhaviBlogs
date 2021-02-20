@@ -39,6 +39,7 @@ function checkBlog(){
             content3_part1.style.display="block";
             update_blog_content.innerHTML = data[0].blog_desc;
             update_button.disabled="true";
+            document.getElementById("blog_title").readOnly=true;
         }else{
             content3_part1.style.display="none";
             alert("blog not found");

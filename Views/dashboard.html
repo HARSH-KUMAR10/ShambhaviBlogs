@@ -78,13 +78,15 @@
         </div>
         <div id="content3" style="display: none;">
             <h1>Update Blog</h1>
-            Title : <input type="text" id="blog_title"/><br/><br/>
+            <form method="GET">
+            Title : <input type="text" name="blog_title" id="blog_title"/><br/><br/>
             <button type="button" id="update_button" onclick="checkBlog()">Check Blog</button><br/><br/>
-            <div id="content3_part1" style="display: none;">
+            <div id="content3_part1" style="display:none;">
                 Date : <input type="date" name="blog_date"/><br/><br/>
                 Content : <textarea name="blog_content" id="blog_content" rows="20" cols="50"></textarea><br/><br/>
-                <input type=submit value="update" formaction="/updateBlog"/>
+                <input type='submit' value="Update" formaction="/updateBlog"/>
             </div>
+            </form>
         </div>
     </div>
 </body>
