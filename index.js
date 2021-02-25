@@ -133,7 +133,13 @@ app.get('/updateBlog',(req,res)=>{
     console.log(blog_date,blog_title,blog_content);
     var titlename = blog_title.split(' ');
     var blog_content_array = blog_content.split('\r\n');
-    var sql = "update blogs set blog_date='"+blog_date+"',blog_content='"+blog_content+" where blog_title='"+blog_title+"';"
+    var str="";
+    var str2="";
+    for(i=0;i<blog_content_array.length;i++){
+    str += blog_content_array[i];
+    str2+=blog_content_array[i]+"<br/>";
+    }
+    var sql = "update blogs set blog_date='"+blog_date+"',blog_desc='"+str+"' where blog_title='"+blog_title+"';"
     pool.query(sql,(err,result)=>{
         if(err){
             console.log(err);
@@ -154,7 +160,7 @@ app.get('/updateBlog',(req,res)=>{
             content : blog_content
             }
             var fileContent = '<html><head><title>'+data.title+'| Shambhavi'+'</title><link rel="stylesheet" href="style.css"/></head>';
-            fileContent+='<body><div id="heading">Shambhavi Writes</div><div id="mainContent"><div id="title">'+data.title+'</div><div id="date">'+data.date+'</div><div id="content">'+data.content;
+            fileContent+='<body><div id="heading">Shambhavi Writes</div><div id="mainContent"><div id="title">'+data.title+'</div><div id="date">'+data.date+'</div><div id="content">'+str2;
             fileContent+='</div></div></body></html>';
             fs.writeFile(__dirname+'/Blogs/'+filename,fileContent,(err)=>{
         if(err){
@@ -166,7 +172,8 @@ app.get('/updateBlog',(req,res)=>{
 
 
         }
-    })
+    });
+    res.sendFile(__dirname+'/Views/dashboard.html');
 })
 /*
 Adding directories used
