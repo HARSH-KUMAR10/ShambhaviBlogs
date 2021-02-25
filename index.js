@@ -184,6 +184,7 @@ app.use(express.static('Blogs'));
 /*
 Giving a listening port
 */
-app.listen('8001',(err)=>{
+var PORT = process.env.PORT || 8001;
+app.listen(PORT,(err)=>{
     console.log('listening to http://localhost:8001');
 });
